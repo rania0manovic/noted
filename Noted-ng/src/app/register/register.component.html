@@ -1,0 +1,38 @@
+<link href="http://fonts.googleapis.com/css?family=Roboto">
+<div id="all">
+  <div id="blur">
+    <div id="register-content">
+      <img routerLink="" src="assets/images/new_logo.png" id="logo" alt="">
+      <h3> Join us today!</h3>
+      <p class="gray-text">First Name</p>
+      <input [(ngModel)]="newUser.name" class="register-input" type="text">
+      <p *ngIf="newUser.name!=null" class="gray-text" style="font-size: smaller;color:rgba(232,0,0,0.88)">{{errors.name}}</p>
+      <p class="gray-text">Last Name</p>
+      <input [(ngModel)]="newUser.surname" class="register-input" type="text">
+      <p *ngIf="newUser.surname!=null" class="gray-text" style="font-size: smaller;color:rgba(232,0,0,0.88)">{{errors.surname}}</p>
+      <p class="gray-text">Email</p>
+      <input [(ngModel)]="newUser.email" class="register-input" type="text">
+      <p *ngIf="newUser.email!=null" class="gray-text" style="font-size: smaller;color:rgba(232,0,0,0.88)">{{errors.email}}</p>
+      <p class="gray-text">Password</p>
+      <input [(ngModel)]="newUser.password" class="register-input" type="password">
+      <p *ngIf="newUser.password!=null" class="gray-text" style="font-size: smaller;color:rgba(232,0,0,0.88)">{{errors.password}}</p>
+      <app-button-component [buttonStyles]="{'margin':'20px 0','width':'83%'}" (click)="Register()">Sign up</app-button-component>
+      <a routerLink="/login">Already a member? Login here!</a>
+
+    </div>
+    <div *ngIf="alert==true" id="dimBg"></div>
+    <div *ngIf="alert==true" id="alertSuccess">
+      <div id="alertTop">
+        <img alt="" id="checkIcon" src="assets/images/all-done-icon.png">
+      </div>
+      <div class="alertBottom">
+        <h2 style="padding: 10px">Welcome!</h2>
+        <p style="padding: 10px">Your account has been created successfully. Please check your email to get started.</p>
+        <app-button-component [buttonStyles]="{'margin':'20px 0','width':'83%'}" (click)="alert=false;">Ok</app-button-component>
+      </div>
+    </div>
+    <img alt="" routerLink="" id="homeIcon" title="Go back home" src="assets/images/home-icon.png">
+  </div>
+</div>
+<app-spinner-screen *ngIf="isWaiting==true"></app-spinner-screen>
+

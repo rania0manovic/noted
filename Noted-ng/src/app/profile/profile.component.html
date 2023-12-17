@@ -1,0 +1,30 @@
+<link href="http://fonts.googleapis.com/css?family=Roboto">
+<div id="all">
+  <div id="blur">
+    <app-notify *ngIf="isSuccess==true" type="success" message="You successfully updated your data!" ></app-notify>
+    <div id="container">
+    <div id="left">
+      <img id="pfp"  [src]="selectedImageUrl== null? 'assets/images/profile-picture-default.webp' : selectedImageUrl" >
+        <input type="file" #fileInput hidden (change)="onFileSelected($event)">
+      <app-button-component (click)="fileInput.click()" [buttonStyles]="{'margin':'10px','color':'#414585FF', 'background-color': 'transparent','background-color:hover': 'blue', 'border': '1px #414585FF solid'}">+ Upload profile photo</app-button-component>
+    </div>
+    <div id="right">
+     <div id="right-content">
+       <h3>Personal information</h3>
+       <p class="gray-text">Name</p>
+       <input [(ngModel)]="user.FirstName" [disabled]="!editing" class="input" type="text">
+       <p  class="gray-text">Surname</p>
+       <input [(ngModel)]="user.LastName" [disabled]="!editing" class="input"  type="text">
+       <p class="gray-text">Email</p>
+       <input [(ngModel)]="user.Email" [disabled]="!editing" class="input" type="text">
+       <p class="gray-text"><u>Change password</u></p>
+       <app-button-component (click)="EditUser();editing=!editing" [buttonStyles]="{'width':'100%','margin':'20px 0','padding':''}"  >{{editing==true ? "Save" : "Edit"}} </app-button-component>
+     </div>
+    </div>
+    </div>
+  </div>
+  <img alt="" routerLink="/home" id="homeIcon" title="Go back home" src="assets/images/home-icon.png">
+</div>
+
+
+

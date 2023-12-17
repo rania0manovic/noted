@@ -1,0 +1,88 @@
+<head id="head">
+
+</head>
+<div id="all">
+  <div id="blur">
+    <div id="content">
+      <div class="table-name">
+        <div
+          style="width: 3%;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 10px">
+          <div class="line"></div>
+          <div style=";flex-basis: 50%"></div>
+        </div>
+        <h3 (blur)="ChangeName($event)" *ngIf="table_data" contenteditable="true" style="width: auto">{{table_data[0].name}} </h3>
+        <div
+          style="width: auto; flex-grow:1;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 30px">
+          <div class="line"></div>
+          <div style=";flex-basis: 50%"></div>
+        </div>
+      </div>
+      <div class="table-content">
+        <div class="">
+          <table *ngIf="table_data!=null">
+            <thead>
+            <tr>
+              <th [ngStyle]="{background: table_data[0].color}" > No.</th>
+              <th [ngStyle]="{background: table_data[0].color}" (input)="checkLength($event)"
+                  #data *ngFor="let th of table_data[0].tableHeaderRow.tableRowDatas"
+                  (blur)="EditTableData(th.id, $event)"
+                  (keydown.enter)="data.blur()"
+                  contenteditable="true">{{th.data}}</th>
+              <th [ngStyle]="{background: table_data[0].color}"> Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  *ngFor="let tr of table_data[0].tableBodyRows; let i=index">
+              <td [ngStyle]="i%2!=0 ?{background: table_data[0].color} : null">{{i + 1}}</td>
+              <td  [ngStyle]="i%2!=0 ?{background: table_data[0].color} : null" (input)="checkLength($event)"
+                  #data *ngFor="let td of tr.tableRowDatas"
+                  (blur)="EditTableData(td.id, $event)"
+                  (keydown.enter)="data.blur()"
+                  contenteditable="true">{{td.data}}</td>
+              <td [ngStyle]="i%2!=0 ?{background: table_data[0].color} : null">
+                <div (click)="DeleteRow(tr.id)" title="Delete this row">
+                  <svg fill="red" class="actionsbtn" xmlns="http://www.w3.org/2000/svg" height="20"
+                       viewBox="0 96 960 960" width="20">
+                    <path
+                      d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+
+                  </svg>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center;height: 15%">
+        <div (click)="AddNewRow()" title="Add new row">
+          <svg class="actionsbtn wh" xmlns="http://www.w3.org/2000/svg" height="30"
+               viewBox="0 96 960 960" width="30">
+            <path
+              d="M453 776h60V610h167v-60H513V376h-60v174H280v60h173v166Zm27.266 200q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/>
+          </svg>
+        </div>
+        <div (click)="DeleteTable()" title="Delete table">
+          <svg class="actionsbtn wh" xmlns="http://www.w3.org/2000/svg" height="30"
+               viewBox="0 96 960 960" width="30">
+            <path
+              d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+          </svg>
+        </div>
+        <div  style="border: 2px solid rgba(128,128,128,0.16);border-radius: 3px;display: flex; padding: 0">
+          <div class="colors" *ngFor="let color of colors" (click)="ChangeColor(color.code)"  [ngStyle]="table_data[0].color==color.code ? {background: 'rgba(128,128,128,0.16)'} : null ">
+            <svg [attr.fill]="color.code" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
+              <path
+                d="M480.033 981.978q-83.468 0-157.541-31.878-74.073-31.879-129.393-87.199-55.32-55.32-87.199-129.36-31.878-74.04-31.878-157.508 0-84.468 31.878-158.541 31.879-74.073 87.161-128.906 55.283-54.832 129.341-86.818 74.057-31.986 157.545-31.986 84.488 0 158.589 31.968 74.102 31.967 128.916 86.768 54.815 54.801 86.79 128.883Q886.218 491.484 886.218 576q0 83.501-31.986 157.57-31.986 74.069-86.818 129.36-54.833 55.291-128.873 87.17-74.04 31.878-158.508 31.878Z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img alt="" routerLink="/home" id="homeIcon" title="Go back home" src="assets/images/home-icon.png">
+</div>
+<label title="Day/Night Mode" class="toggle">
+  <input [(ngModel)]="DarkMode"  id="cb" type="checkbox">
+  <span class="slider round"></span>
+</label>

@@ -1,0 +1,22 @@
+<link href="http://fonts.googleapis.com/css?family=Roboto">
+<div id="all">
+  <div id="blur">
+    <div id="login-content">
+      <img routerLink="" src="assets/images/new_logo.png" id="logo" alt="">
+      <h3>Welcome back!</h3>
+      <p class="gray-text">Email</p>
+      <input (keyup.enter)="VerifyLogin()" [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}"
+             [(ngModel)]="email" class="login-input" type="text">
+      <p class="gray-text">Password</p>
+      <input (keyup.enter)="VerifyLogin()"  [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}"
+             [(ngModel)]="password" class="login-input" type="password">
+      <p *ngIf="wrongInput==true" class="gray-text" style="font-size: smaller;color:rgba(232,0,0,0.88)">Wrong input. Please try again.</p>
+        <app-button-component [buttonStyles]="{'margin':'20px 0','width':'83%'}" (click)="VerifyLogin()">Sign in</app-button-component>
+      <a routerLink="/register">Not a member yet? Register now!</a>
+    </div>
+  </div>
+
+  <img alt="" routerLink="" id="homeIcon" title="Go back home" src="assets/images/home-icon.png">
+</div>
+<app-spinner-screen *ngIf="isWaiting==true"></app-spinner-screen>
+

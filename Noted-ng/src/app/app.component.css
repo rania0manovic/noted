@@ -1,0 +1,111 @@
+#all{
+  background-color: rgb(243, 243, 243);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  color: #4a4a4a;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+}
+li{
+  display: inline;
+  margin: 5px;
+}
+ul{
+  text-align: right;
+  width: 80%;
+}
+.nav{
+  background-color: rgba(89, 89, 89, 0);
+  height: 70px;
+  display: flex;
+
+}
+li,h2,ul,.btn{
+  background-color: rgba(0, 0, 139, 0);
+
+}
+h2{
+  width: 20%;
+  display: inline-block;
+  font-family: 'Yeseva One', cursive;
+  margin: 20px;
+
+}
+.btn{
+  border: none;
+  padding: 7px 20px;
+  color: #4a4a4a;
+  border-radius: 20px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+#signinbtn:hover{
+  background-color: rgba(242, 142, 133, 0.64);
+}
+#signinbtn:active{
+  background-color: rgb(240, 141, 133);
+}
+#signinbtn {
+  background-color: #f08d85;
+  font-weight: bold;
+  font-size: 15px;
+}
+#sel{
+  margin: 5px;
+  padding: 2px 8px;
+  background-color: rgba(218, 211, 211, 0);
+  border: none;
+  border-radius: 10px;
+  color: #4a4a4a;
+}
+option{
+  background-color: whitesmoke;
+}
+#Square{
+  width: 400px;
+  height: 400px;
+  background-color: #F28E85;
+  top: 200px;
+  left: 150px;
+  z-index: 1;
+  position: absolute;
+  box-shadow: -30px 70px 20px rgba(0, 0, 0, 0.49);
+
+}
+#Circle{
+  width: 300px;
+  height: 300px;
+  background-color:#595959;
+  border-radius: 100%;
+  left:350px;
+  position: absolute;
+  box-shadow: -30px 50px 20px rgba(0, 0, 0, 0.49);
+
+}
+#CircleYellow{
+  width: 250px;
+  height: 250px;
+  background-color: #F2CD88;
+  border-radius: 100%;
+  left: 70px;
+  top:450px;
+  position: absolute;
+  z-index: 2;
+  box-shadow: -30px 50px 20px rgba(0, 0, 0, 0.49);
+
+}
+#body{
+  display: flex;
+}
+#msg{
+  position: absolute;
+  font-size: 50px;
+  top: 400px;
+  left: 300px;
+  z-index: 2;
+  font-weight: bolder;
+  font-family: 'Yeseva One', cursive;
+}
+
+

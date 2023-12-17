@@ -1,0 +1,9 @@
+<div class="notify-container">
+  <div class="notify notify-slide-in" [ngClass]="{ 'notify-error': type === 'error', 'notify-success': type === 'success' }">
+    <div class="notify-content">
+      <div class="notify-message">{{ message }}</div>
+      <div class="notify-close" (click)="closeNotif()">&times;</div>
+    </div>
+    <div class="notify-progress" [style.width]="progressWidth"></div>
+  </div>
+</div>

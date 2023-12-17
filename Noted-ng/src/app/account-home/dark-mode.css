@@ -1,0 +1,67 @@
+
+/*NIGHT MODE*/
+.night-mode{
+  background-color: #272727;
+}
+.night-mode #navbar-all{
+  background-color: #1a1a1a;
+}
+* p, li {
+  color: #ececec;
+}
+.repoLi:before{
+  background-image:url("../../assets/images/repo-icon-white.png") ;
+}
+.repoLi:before{
+  background-image:url("../../assets/images/repo-icon-white.png") ;
+}
+.nestedLi li:before{
+  background-image:url("../../assets/images/bullet-point-arrow-white.png") ;
+}
+.taskLi:before{
+  background-image: url("../../assets/images/task-icon-white.png");
+  padding-bottom: 4px;
+}
+.calendarLi:before{
+  background-image: url("../../assets/images/calender-icon-white.png");
+}
+.groupLi:before{
+  background-image: url("../../assets/images/group-project-icon-white.png");
+}
+#settings:before{
+  background-image: url("../../assets/images/settings-png-white.png");
+
+}
+.editBtn:before{
+  background-image: url("../../assets/images/edit-icon-white.png");
+
+}
+.repoLi:hover, .rep:hover, .taskLi:hover, .calendarLi:hover,.groupLi:hover{
+  background-color: rgba(47, 47, 47, 0.41);
+}
+#headerTop, #pinnedContent{
+  background-color:#1a1a1a ;
+  box-shadow: rgba(33, 33, 33, 0.62) 0 0 15px 2px;
+
+}
+.makeEditWindow, #profile-info{
+  background-color: #1a1a1a;
+}
+.makeEditWindow button{
+  color: #ececec;
+}
+#profile-info{
+  color: #ececec;
+  box-shadow: rgba(12, 12, 12, 0.62) 0 0 15px 2px;
+}
+#profile-info-body button{
+  color: #ececec;
+}
+button {
+  background-color: #373737;
+  color: #ececec;
+}
+
+#btnAddNewRepo:hover, .btn:hover{
+  background-color: rgba(39, 39, 39, 0.25);
+}

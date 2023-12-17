@@ -1,0 +1,38 @@
+<head id="head">
+
+</head>
+<div id="all">
+  <div id="blur">
+    <div *ngIf="note_data!=null" id="content">
+      <div class="note-name">
+        <div
+          style="width: 3%;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 10px">
+          <div class="line"></div>
+          <div style=";flex-basis: 50%"></div>
+        </div>
+        <h3 contenteditable="true" style="width: auto">{{note_data.name}}</h3>
+        <div
+          style="width: auto; flex-grow:1;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 30px">
+          <div class="line"></div>
+          <div style=";flex-basis: 50%"></div>
+        </div>
+      </div>
+      <div  class="note-content">
+        <div  class="note" >
+          <textarea class="title" (blur)="EditNote()" spellcheck="false" [(ngModel)]="note_data.title" ></textarea>
+          <textarea class="text" (blur)="EditNote()" spellcheck="false" [(ngModel)]="note_data.data "></textarea>
+        </div>
+
+      </div>
+      <div style="align-self: center" title="Delete note">
+        <svg class="actionsbtn wh" xmlns="http://www.w3.org/2000/svg" height="30"
+             viewBox="0 96 960 960" width="30">
+          <path
+            d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+        </svg>
+      </div>
+
+    </div>
+    <img alt="" routerLink="/home" id="homeIcon" title="Go back home" src="assets/images/home-icon.png">
+  </div>
+</div>

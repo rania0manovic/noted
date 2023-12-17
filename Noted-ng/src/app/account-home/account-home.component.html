@@ -1,0 +1,297 @@
+<head id="head">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+</head>
+
+<div class="night-mode" id="everything">
+  <app-notify *ngIf="isSuccess==true" type="success" [message]="notifyMessage" ></app-notify>
+
+  <div id="navbar-all">
+    <img (click)="ProfileOnClick()" alt=""  id="profile" [src]="selectedImageUrl== null? 'assets/images/profile-picture-default.webp' : selectedImageUrl">
+    <div (click)="CloseWindows()" id="navbar">
+      <ul id="navbar-content">
+        <div (click)="ShowHideList('.nestedLi')" class="navbar-items">
+          <svg fill="white" class="navbar-items-icon" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960"
+               width="30">
+            <path
+              d="M140 896q-23 0-41.5-18.5T80 836V316q0-23 18.5-41.5T140 256h281l60 60h339q23 0 41.5 18.5T880 376H455l-60-60H140v520l102-400h698L833 850q-6 24-22 35t-41 11H140Zm63-60h572l84-340H287l-84 340Zm0 0 84-340-84 340Zm-63-460v-60 60Z"/>
+          </svg>
+          <li class="repoLi navbar-items-text">My repositories</li>
+        </div>
+        <li class="nestedLi">
+          <ul *ngFor="let x of user_repositories">
+            <div (click)="RepoOnClick(x.id,x.name)" class="navbar-items">
+              <svg fill="white" class="navbar-items-icon-nested" xmlns="http://www.w3.org/2000/svg" height="25"
+                   viewBox="0 96 960 960"
+                   width="25">
+                <path
+                  d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/>
+              </svg>
+              <li class="navbar-items-text-nested">{{x.name}}</li>
+            </div>
+          </ul>
+          <ul>
+            <li (click)="ClickedNewRepo()"  id="liBtnAdd">
+              <app-button-component [buttonStyles]="{'margin':'0 10px','width':'90%', 'background-color': 'transparent', 'border': '1px whitesmoke solid'}">+ New</app-button-component>
+            </li>
+          </ul>
+        </li>
+
+        <div class="navbar-items">
+          <svg fill="white" class="navbar-items-icon" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960"
+               width="30">
+            <path
+              d="M180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600V486H180v430Zm0-490h600V296H180v130Zm0 0V296v130Zm300 230q-17 0-28.5-11.5T440 616q0-17 11.5-28.5T480 576q17 0 28.5 11.5T520 616q0 17-11.5 28.5T480 656Zm-160 0q-17 0-28.5-11.5T280 616q0-17 11.5-28.5T320 576q17 0 28.5 11.5T360 616q0 17-11.5 28.5T320 656Zm320 0q-17 0-28.5-11.5T600 616q0-17 11.5-28.5T640 576q17 0 28.5 11.5T680 616q0 17-11.5 28.5T640 656ZM480 816q-17 0-28.5-11.5T440 776q0-17 11.5-28.5T480 736q17 0 28.5 11.5T520 776q0 17-11.5 28.5T480 816Zm-160 0q-17 0-28.5-11.5T280 776q0-17 11.5-28.5T320 736q17 0 28.5 11.5T360 776q0 17-11.5 28.5T320 816Zm320 0q-17 0-28.5-11.5T600 776q0-17 11.5-28.5T640 736q17 0 28.5 11.5T680 776q0 17-11.5 28.5T640 816Z"/>
+          </svg>
+          <li class="navbar-items-text">Calendar</li>
+        </div>
+        <div class="navbar-items">
+          <svg fill="white" class="navbar-items-icon" xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960"
+               width="30">
+            <path xmlns="http://www.w3.org/2000/svg"
+                  d="M0 816v-53q0-38.567 41.5-62.784Q83 676 150.376 676q12.165 0 23.395.5Q185 677 196 678.652q-8 17.348-12 35.165T180 751v65H0Zm240 0v-65q0-32 17.5-58.5T307 646q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773 696 765 678.727q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960 763v53H780Zm-480-60h360v-6q0-37-50.5-60.5T480 666q-79 0-129.5 23.5T300 751v5ZM149.567 646Q121 646 100.5 625.438 80 604.875 80 576q0-29 20.562-49.5Q121.125 506 150 506q29 0 49.5 20.5t20.5 49.933Q220 605 199.5 625.5T149.567 646Zm660 0Q781 646 760.5 625.438 740 604.875 740 576q0-29 20.562-49.5Q781.125 506 810 506q29 0 49.5 20.5t20.5 49.933Q880 605 859.5 625.5T809.567 646ZM480 576q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600 456q0 50-34.5 85T480 576Zm.351-60Q506 516 523 498.649t17-43Q540 430 522.851 413t-42.5-17Q455 396 437.5 413.149t-17.5 42.5Q420 481 437.351 498.5t43 17.5ZM480 756Zm0-300Z"/>
+          </svg>
+          <li class="groupLi">Group projects</li>
+        </div>
+      </ul>
+      <div title="Settings" routerLink="/settings" id="settings">
+      </div>
+      <label title="Day/Night Mode" class="toggle">
+        <input [(ngModel)]="DarkMode"  id="cb" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <div (click)="CloseWindows()" id="body">
+    <div class="headerImageContent">
+    <img alt="" class="headerImage" [src]="selectedHeaderUrl== null? 'assets/images/1837.jpg' : selectedHeaderUrl" >
+      <input type="file" #fileInput hidden (change)="onFileSelected($event)">
+      <app-button-component (click)="fileInput.click()" title="Change header photo" [buttonStyles]="{'margin':'0 10px','position':'absolute','top':'25%','right':'0','padding': '2px','width':'22px'}">+</app-button-component>
+
+    </div>
+    <div id="headerTop">
+      <p style="text-transform: uppercase" id="welcomeMsg" *ngIf="user!=null">Welcome, {{user.FirstName}}!</p>
+      <p id="motivationalMessage" *ngIf="quote!=null">Today's message: "{{quote}}"</p>
+    </div>
+    <div id="pinnedContent">
+      <div id="repoContent" *ngIf="repoIsActive===true">
+        <div id="repoContent-header">
+          <div
+            style="width: 3%;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 10px">
+            <div class="line" ></div>
+            <div style=";flex-basis: 50%"></div>
+          </div>
+          <h3 style="width: auto"> {{new_repo.name}}</h3>
+          <div
+            style="width: auto; flex-grow:1;display: flex;flex-direction: column; opacity: 30% ;margin-left: 10px; margin-right: 30px">
+            <div class="line"></div>
+            <div style=";flex-basis: 50%"></div>
+          </div>
+        </div>
+        <div id="repoContent-body">
+          <div class="flex-row" >
+            <div (click)="NavigateToSelectedTable(t.name, t.id)" class="flex-column f-15 p-y-15" *ngFor="let t of this.tables">
+              <svg fill="#404484" xmlns="http://www.w3.org/2000/svg" height="58" viewBox="0 96 960 960" width="58">
+                <path
+                  d="M120 936V216h720v720H120Zm60-500h600V276H180v160Zm220 220h160V496H400v160Zm0 220h160V716H400v160ZM180 656h160V496H180v160Zm440 0h160V496H620v160ZM180 876h160V716H180v160Zm440 0h160V716H620v160Z"/>
+              </svg>
+              <p class="p-5">{{t.name}}</p>
+            </div>
+            <div (click)="NavigateToSelectedNote(n.name, n.id)" class="flex-column f-15 p-y-15" *ngFor="let n of this.notes">
+              <svg fill="#404484" xmlns="http://www.w3.org/2000/svg" height="58" viewBox="0 96 960 960" width="58">
+                <path
+                  d="M319 806h322v-60H319v60Zm0-170h322v-60H319v60Zm-99 340q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/>
+              </svg>
+              <p class="p-5">{{n.name}}</p>
+            </div>
+            <div (click)="NavigateToSelectedCheckList(c.name, c.id)" class="flex-column f-15 p-y-15" *ngFor="let c of this.checklists">
+              <svg fill="#404484" xmlns="http://www.w3.org/2000/svg" height="58" viewBox="0 96 960 960" width="58">
+                <path
+                  d="M222 842 80 700l42-42 100 99 179-179 42 43-221 221Zm0-320L80 380l42-42 100 99 179-179 42 43-221 221Zm298 244v-60h360v60H520Zm0-320v-60h360v60H520Z"/>
+              </svg>
+              <p class="p-5">{{c.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="repoActions" *ngIf="repoIsActive===true">
+        <svg (click)="addNewItemToRepo=true" class="actionsbtn" xmlns="http://www.w3.org/2000/svg" height="48"
+             viewBox="0 96 960 960" width="48">
+          <path
+            d="M453 776h60V610h167v-60H513V376h-60v174H280v60h173v166Zm27.266 200q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/>
+        </svg>
+        <svg (click)="editRepo=true" class="actionsbtn" xmlns="http://www.w3.org/2000/svg" height="48"
+             viewBox="0 96 960 960" width="48">
+          <path
+            d="M180 876h44l443-443-44-44-443 443v44Zm614-486L666 262l42-42q17-17 42-17t42 17l44 44q17 17 17 42t-17 42l-42 42Zm-42 42L248 936H120V808l504-504 128 128Zm-107-21-22-22 44 44-22-22Z"/>
+        </svg>
+        <svg (click)="deleteRepo=true" fill="red" class="actionsbtn" xmlns="http://www.w3.org/2000/svg" height="48"
+             viewBox="0 96 960 960" width="48">
+          <path
+            d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="deleteRepo==true" class="dimBg"></div>
+  <div [ngStyle]="{height:'150px'}" *ngIf="deleteRepo==true" class="container-mini">
+    <svg (click)="deleteRepo=false" style="align-self: self-start" class="actionsbtn" xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Are you sure you want to delete {{new_repo.name}}? </p>
+    <app-button-component (click)="DeleteRepo()"  [buttonStyles]="{'margin':'20px', 'width': '30%'}">Yes</app-button-component>
+  </div>
+
+  <div *ngIf="makeNewRepo==true" class="dimBg"></div>
+  <div *ngIf="makeNewRepo==true" class="container-small">
+    <svg (click)="makeNewRepo=false;wrongInput=false;" style="align-self: self-start" class="actionsbtn"
+         xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Name </p>
+    <input (keyup.enter)="AddNewRepo()" [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}"
+           [(ngModel)]="new_repo.name">
+    <p *ngIf="wrongInput"
+      [ngStyle]="wrongInput==true?{color:'#E80000E0', 'font-size':'12px', padding:'10px',opacity:'100%'}: {'font-size':'12px', padding:'10px',opacity:'0%'}">
+      Wrong input! You can only use letters, numbers and character -</p>
+    <app-button-component (click)="AddNewRepo()"  [buttonStyles]="{'margin':'20px', 'width':'30%'}">Add</app-button-component>
+
+  </div>
+
+  <div *ngIf="editRepo==true" class="dimBg"></div>
+  <div *ngIf="editRepo==true" class="container-small">
+    <svg (click)="editRepo=false" style="align-self: self-start" class="actionsbtn" xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Name </p>
+    <input class="inp" (keyup.enter)="EditRepo()" [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}"
+           [(ngModel)]="new_repo.name">
+    <p *ngIf="wrongInput"
+      [ngStyle]="wrongInput==true?{color:'#E80000E0', 'font-size':'12px', padding:'10px',opacity:'100%'}: {'font-size':'12px', padding:'10px',opacity:'0%'}">
+      Wrong input! You can only use letters, numbers and character -</p>
+    <app-button-component (click)="EditRepo()"  [buttonStyles]="{'margin':'20px', 'width': '30%'}">Edit</app-button-component>
+
+  </div>
+
+  <div *ngIf="addNewItemToRepo==true" class="dimBg"></div>
+  <div *ngIf="addNewItemToRepo==true" class="container-small">
+    <svg (click)="addNewItemToRepo=false; wrongInput=false" style="align-self: self-start" class="actionsbtn"
+         xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>What would you like to create? </p>
+    <br>
+    <div class="flex-row space-around p-b-10">
+      <div (click)="addTableWindow=true;addNewItemToRepo=false" class="flex-column opacity-50 p-y-10 p-x-30">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+          <path
+            d="M120 936V216h720v720H120Zm60-500h600V276H180v160Zm220 220h160V496H400v160Zm0 220h160V716H400v160ZM180 656h160V496H180v160Zm440 0h160V496H620v160ZM180 876h160V716H180v160Zm440 0h160V716H620v160Z"/>
+        </svg>
+        <p class="p-0">Table</p>
+      </div>
+      <div (click)="addNoteWindow=true; addNewItemToRepo=false" class="flex-column opacity-50 p-x-30  p-y-10">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+          <path
+            d="M319 806h322v-60H319v60Zm0-170h322v-60H319v60Zm-99 340q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/>
+        </svg>
+        <p class="p-0">Note</p>
+      </div>
+      <div (click)="addCheckListWindow=true; addNewItemToRepo=false" class="flex-column opacity-50 p-x-30  p-y-10">
+        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+          <path
+            d="M222 842 80 700l42-42 100 99 179-179 42 43-221 221Zm0-320L80 380l42-42 100 99 179-179 42 43-221 221Zm298 244v-60h360v60H520Zm0-320v-60h360v60H520Z"/>
+        </svg>
+        <p class="p-0">Checklist</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="addTableWindow==true" class="dimBg"></div>
+  <div *ngIf="addTableWindow==true" class="container-mid">
+    <svg (click)="addTableWindow=false;addNewItemToRepo=false; wrongInput=false" style="align-self: self-start" class="actionsbtn"
+         xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Please select name and number of columns:</p>
+    <div>
+      <div class="flex-column h-none" >
+        <input [(ngModel)]="new_table.name" class="inp" (keyup.enter)="AddNewTable()"
+               [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}">
+        <p *ngIf="wrongInput"
+          [ngStyle]="wrongInput==true?{color:'#E80000E0', 'font-size':'12px', padding:'2px',opacity:'100%'}: {'font-size':'12px', padding:'0px',opacity:'0%'}">
+          Wrong input! You can only use letters, numbers and character -</p>
+        <select [(ngModel)]="new_table.numberOfColumns" style="width: 245px">
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+        <app-button-component (click)="AddNewTable()"  [buttonStyles]="{'margin':'20px'}">Create table</app-button-component>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="addNoteWindow==true" class="dimBg"></div>
+  <div *ngIf="addNoteWindow==true" class="container-small">
+    <svg (click)="addNoteWindow=false;addNewItemToRepo=false; wrongInput=false" style="align-self: self-start" class="actionsbtn"
+         xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Please select note name:</p>
+    <div>
+      <div class="flex-column h-none" >
+        <input [(ngModel)]="new_note.name" class="inp" (keyup.enter)="AddNewNote()"
+               [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}">
+        <p *ngIf="wrongInput"
+          [ngStyle]="wrongInput==true?{color:'#E80000E0', 'font-size':'12px', padding:'2px',opacity:'100%'}: {'font-size':'12px', padding:'0px',opacity:'0%'}">
+          Wrong input! You can only use letters, numbers and character -</p>
+        <app-button-component (click)="AddNewNote()"  [buttonStyles]="{'margin':'20px'}">Create note</app-button-component>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="addCheckListWindow==true" class="dimBg"></div>
+  <div *ngIf="addCheckListWindow==true" class="container-small">
+    <svg (click)="addCheckListWindow=false;addNewItemToRepo=false; wrongInput=false" style="align-self: self-start" class="actionsbtn"
+         xmlns="http://www.w3.org/2000/svg"
+         height="48" viewBox="0 96 960 960" width="48">
+      <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+    </svg>
+    <p>Please select checklist name:</p>
+    <div>
+      <div class="flex-column h-none" >
+        <input [(ngModel)]="new_checklist.name" class="inp" (keyup.enter)="AddNewChecklist()"
+               [ngStyle]="wrongInput==true?{color:'#E80000E0'}:{color:'#595959'}">
+        <p *ngIf="wrongInput"
+           [ngStyle]="wrongInput==true?{color:'#E80000E0', 'font-size':'12px', padding:'2px',opacity:'100%'}: {'font-size':'12px', padding:'0px',opacity:'0%'}">
+          Wrong input! You can only use letters, numbers and character -</p>
+        <app-button-component (click)="AddNewChecklist()"  [buttonStyles]="{'margin':'20px'}">Create checklist</app-button-component>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="profileIsClicked===true" id="profile-info">
+    <img  alt="" id="profile-info-pic" [src]="selectedImageUrl== null? 'assets/images/profile-picture-default.webp' : selectedImageUrl">
+    <div id="profile-info-body">
+      <h3>{{user.FirstName}} {{user.LastName}}</h3>
+      <h5>{{user.Email}}</h5>
+      <button routerLink="/profile" id="checkProfilebtn">Visit profile </button>
+      <button (click)="SignOut()" id="SignOutBtn">Sign out</button>
+    </div>
+  </div>
+</div>
+<app-spinner-screen [backgroundStyles]="{'opacity':'100%'}"  *ngIf=" isWaiting==true"></app-spinner-screen>
+

@@ -1,0 +1,154 @@
+#all{
+  background-color: whitesmoke;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  max-height: 100%;
+  color: #272727;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+li{
+  display: inline;
+  margin:  5px;
+}
+ul{
+  text-align: right;
+  width: 80%;
+}
+.nav{
+  background-color: rgba(104, 104, 104, 0.04);
+  height: 80px;
+  display: flex;
+  box-shadow: 1px 0 10px rgba(0, 0, 0, 0.12);
+
+}
+li,h2,ul,.btn{
+  background-color: rgba(0, 0, 139, 0);
+
+}
+h2{
+  display: inline-block;
+  margin:  35px 20px;
+
+}
+.btn{
+  border: none;
+  margin: 15px 20px;
+  font-size: 14px;
+}
+#logo{
+  height: 40px;
+  opacity: 80%;
+  margin: 15px 20px;
+}
+#logocontainer{
+  width: 20%;
+}
+.header-content{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+#sel{
+  margin: 5px;
+  padding: 2px 8px;
+  background-color: rgba(218, 211, 211, 0);
+  border: none;
+  border-radius: 10px;
+  color: #4a4a4a;
+}
+option{
+  background-color: whitesmoke;
+}
+#Square{
+  width: 350px;
+  height: 350px;
+  background-color: #73c17f;
+  top: 150px;
+  left: 150px;
+  z-index: 1;
+  position: absolute;
+  box-shadow: -30px 70px 20px rgba(0, 0, 0, 0.49);
+
+}
+#Circle{
+  width: 200px;
+  height: 200px;
+  background-color:#595959;
+  border-radius: 100%;
+  left:380px;
+  position: absolute;
+  box-shadow: -30px 50px 20px rgba(0, 0, 0, 0.49);
+
+}
+#CircleYellow{
+  width: 200px;
+  height: 200px;
+  background-color: #243c27;
+  border-radius: 100%;
+  left: 70px;
+  top:380px;
+  position: absolute;
+  z-index: 2;
+  box-shadow: -30px 50px 20px rgba(0, 0, 0, 0.49);
+}
+.body{
+  display: flex;
+  margin-top: 30px;
+  animation: fadeIn ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  height: 100vh;
+}
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+#msg{
+  position: absolute;
+  font-size: 50px;
+  top: 50%;
+  left: 100px;
+  z-index: 2;
+  font-weight: bolder;
+  opacity: 0%;
+  animation:  slideInFromLeft 2s 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes slideInFromLeft {
+  0%{
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  50%{
+    transform: translateX(0);
+  }
+  60%{
+    transform: translateX(-2px);
+  }
+  70%{
+    transform: translateX(2px);
+  }
+  80%{
+    transform: translateX(-1px);
+  }
+  90%{
+    transform: translateX(1px);
+  }
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
