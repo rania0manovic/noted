@@ -11,8 +11,9 @@ Noted is a straightforward web app designed to help you manage your tasks effici
 - More TBA
 
 ### Screenshots and Demos
-**1: Landing Page**
+**1: Landing Page** <br>
 
+![landing](https://github.com/rania0manovic/noted/assets/154012872/0c1efaaa-5836-454b-910a-baffc8e156ad)
 
 **2: Home Page**
 
